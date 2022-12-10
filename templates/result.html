@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result.html</title>
+ <style>
+    table, td,th
+    {
+        color: purple; font-size:22px;
+        border: 0.5px solid blue;
+        width: 20%;
+        border-collapse: collapse;
+    }
+    input, body
+    {
+      color: brown; font-size:22px;
+    }
+     span { font-weight: bold; color:blue}
+     div { font-size: 22px; color:seagreen}
+  </style>
+</head>
+<body>
+
+<a href="/">Tiếp tục tính </a><br><br>
+<strong>Kết quả của tính toán</strong><br>
+Nhập tọa độ vecto chỉ phương của (d1): <span>{{vecto_cp_d1}}</span><br>
+Nhập tọa độ vecto chỉ phương của (d2): <span>{{vecto_cp_d2}}</span><br>
+Nhập tọa độ điểm A thuộc (d1): <span>{{A_d1}}</span><br>
+Nhập tọa độ điểm B thuộc (d2): <span>{{B_d2}}</span><br>
+[vtcp1,vtcp2] = <span>{{Tich_co_huong_2vtcp}}</span><br>
+vectoAB = <span>{{vectoAB}}</span><br>
+[vtcp1,vtcp2].vectoAB = <span>{{Tich_hon_tap}}</span><br>
+[vtcp1,vectoAB] = <span>{{Tich_co_huong_vtcp1_va_vtAB}}</span><br>
+vtcp1.vtcp2 = <span>{{Tich_vo_huong_2vtcp}}</span><br>
+<span>
+        {% if (Tich_co_huong_2vtcp != (0,0,0)) and (Tich_hon_tap == 0) %}
+        {% if (Tich_vo_huong_2vtcp == 0) %}
+        <p> => Hai đường thẳng (d1) và (d2) cắt nhau và vuông góc với nhau</p>
+        {% else %}
+        <p> => Hai đường thẳng (d1) và (d2) cắt nhau nhưng không vuông góc với nhau</p>
+        {% endif %}
+        {% endif %}
+
+        {% if (Tich_co_huong_2vtcp != (0,0,0)) and (Tich_hon_tap != 0) %}
+        {% if (Tich_vo_huong_2vtcp == 0) %}
+        <p> => Hai đường thẳng (d1) và (d2) chéo nhau và vuông góc với nhau </p>
+        {% else %}
+        <p> => Hai đường thẳng (d1) và (d2) chéo nhau nhưng không vuông góc với nhau</p>
+        {% endif %}
+        {% endif %}
+
+        {% if (Tich_co_huong_2vtcp == (0,0,0)) and (Tich_co_huong_vtcp1_va_vtAB == (0,0,0)) %}
+        <p> => Hai đường thẳng (d1) và (d2) trùng nhau</p>
+        {% endif %}
+
+        {% if (Tich_co_huong_2vtcp == (0,0,0)) and (Tich_co_huong_vtcp1_va_vtAB != (0,0,0)) %}
+        <p> => Hai đường thẳng (d1) và (d2) song song</p>
+        
+        {% endif %}
+
+</span>
+      <img src="{{ user_img }}" alt="Visulization">
+</body>
+</html>
